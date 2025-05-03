@@ -1,0 +1,244 @@
+/* Réinitialisation et police */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #1a3c6d;
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #1a3c6d;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h3 {
+    color: #1a3c6d;
+    font-size: 1.2em;
+    margin: 15px 0 10px;
+}
+
+/* Schéma global */
+#schema {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#schema svg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* vCards */
+#modules {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.vcard {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vcard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.vcard-image {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.vcard-image svg {
+    max-width: 100px;
+    height: auto;
+}
+
+.vcard h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.vcard .variables div {
+    margin: 10px 0;
+}
+
+.vcard .view-mode {
+    font-size: 1em;
+    color: #444;
+}
+
+.vcard .edit-mode {
+    display: none;
+}
+
+.vcard.edit .edit-mode {
+    display: block;
+}
+
+.vcard.edit .view-mode {
+    display: none;
+}
+
+.vcard .edit-mode label {
+    font-weight: 600;
+    color: #1a3c6d;
+}
+
+.vcard .edit-mode p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 5px 0;
+}
+
+.vcard .edit-mode input,
+.vcard .edit-mode select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.vcard button {
+    background: #00a6a6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    margin: 5px;
+}
+
+.vcard button:hover {
+    background: #008080;
+}
+
+/* Graphiques */
+#graphiques {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+    margin: 20px 0;
+}
+
+.chart-container h3 {
+    text-align: center;
+}
+
+.chart-container canvas {
+    max-width: 100%;
+    height: 200px !important; /* Hauteur fixe pour éviter aplatissement */
+}
+
+/* Boutons de simulation */
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-group button {
+    background: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: background 0.3s ease;
+}
+
+.button-group button:hover {
+    background: #e55a4e;
+}
+
+/* Rapport, explications, conseils */
+#rapport, #explications, #conseils {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+#rapport p, #explications p, #conseils p {
+    font-size: 1em;
+    color: #444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    #modules {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .vcard {
+        width: 100%;
+    }
+
+    .chart-container canvas {
+        height: 150px !important; /* Réduire légèrement sur petits écrans */
+    }
+
+    .button-group button {
+        display: block;
+        margin: 10px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .vcard-image svg {
+        max-width: 80px;
+    }
+
+    .vcard button {
+        width: 100%;
+        padding: 12px;
+    }
+}

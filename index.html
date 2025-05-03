@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur d’Aquaponie Interactif</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Simulateur d’Aquaponie Interactif</h1>
+
+    <!-- Schéma global -->
+    <div id="schema">
+        <object data="assets/schema_global.svg" type="image/svg+xml" id="schema-svg"></object>
+    </div>
+
+    <!-- Modules (vCards) -->
+    <div id="modules">
+        <div class="vcard" id="poissons">
+            <div class="vcard-image">
+                <object data="assets/poissons.svg" type="image/svg+xml"></object>
+            </div>
+            <h2>Réservoir à poissons</h2>
+            <div class="variables"></div>
+            <button class="edit-btn">Modifier</button>
+            <button class="validate-btn" style="display: none;">Valider</button>
+        </div>
+        <div class="vcard" id="biofiltre">
+            <div class="vcard-image">
+                <object data="assets/biofiltre.svg" type="image/svg+xml"></object>
+            </div>
+            <h2>Biofiltre</h2>
+            <div class="variables"></div>
+            <button class="edit-btn">Modifier</button>
+            <button class="validate-btn" style="display: none;">Valider</button>
+        </div>
+        <div class="vcard" id="plantes">
+            <div class="vcard-image">
+                <object data="assets/plantes.svg" type="image/svg+xml"></object>
+            </div>
+            <h2>Bacs de plantes</h2>
+            <div class="variables"></div>
+            <button class="edit-btn">Modifier</button>
+            <button class="validate-btn" style="display: none;">Valider</button>
+        </div>
+        <div class="vcard" id="circuit_eau">
+            <div class="vcard-image">
+                <object data="assets/circuit_eau.svg" type="image/svg+xml"></object>
+            </div>
+            <h2>Circuit d’eau</h2>
+            <div class="variables"></div>
+            <button class="edit-btn">Modifier</button>
+            <button class="validate-btn" style="display: none;">Valider</button>
+        </div>
+    </div>
+
+    <!-- Graphiques -->
+    <div id="graphiques">
+        <h2>Évolution des paramètres</h2>
+        <div class="chart-container">
+            <h3>Ammoniac (mg/L)</h3>
+            <canvas id="chart-ammonia"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Nitrites (mg/L)</h3>
+            <canvas id="chart-nitrite"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Nitrates (mg/L)</h3>
+            <canvas id="chart-nitrate"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>pH</h3>
+            <canvas id="chart-ph"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Croissance Poissons (kg)</h3>
+            <canvas id="chart-fish"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Croissance Plantes (kg)</h3>
+            <canvas id="chart-plant"></canvas>
+        </div>
+        <div class="button-group">
+            <button onclick="startSimulation()">Lancer Simulation</button>
+            <button onclick="pauseSimulation()">Pause</button>
+        </div>
+    </div>
+
+    <!-- Rapport -->
+    <div id="rapport">
+        <h2>Rapport de Résultats</h2>
+        <div id="rapport-content"></div>
+    </div>
+
+    <!-- Explications -->
+    <div id="explications">
+        <h2>Explications des Modules</h2>
+        <div id="explications-content"></div>
+    </div>
+
+    <!-- Conseils pour l’aquaponie -->
+    <div id="conseils">
+        <h2>Guide pour l’Aquaponie</h2>
+        <h3>Poissons adaptés à l’aquaponie</h3>
+        <p>
+            - <strong>Tilapia</strong> : Résistant, tolère des conditions variées, idéal pour débutants (température : 22-30°C).<br>
+            - <strong>Truite</strong> : Préférence pour l’eau froide (10-20°C), bonne croissance, mais nécessite plus d’oxygène.<br>
+            - <strong>Perche</strong> : Adaptée aux climats tempérés, robuste, bonne qualité gustative.<br>
+            - <strong>Carpe</strong> : Très résistante, mais croissance plus lente, adaptée aux grands systèmes.
+        </p>
+        <h3>Plantes idéales pour l’aquaponie</h3>
+        <p>
+            - <strong>Laitue</strong> : Croissance rapide, faible besoin en nutriments, idéale pour débutants.<br>
+            - <strong>Basilic</strong> : Très productif, préfère un pH de 6.5-7, excellente saveur.<br>
+            - <strong>Menthe</strong> : Robuste, pousse dans diverses conditions, parfaite pour les petits systèmes.<br>
+            - <strong>Épinards</strong> : Bonne croissance, mais nécessite des nitrates élevés.<br>
+            - <strong>Fraises</strong> : Plus exigeantes, mais adaptées aux systèmes matures avec un bon équilibre.
+        </p>
+        <h3>Conseils pour débuter</h3>
+        <p>
+            - <strong>Commencez petit</strong> : Une cuve de 500-1000 L et 10-20 plantes suffisent pour apprendre.<br>
+            - <strong>Surveillez l’eau</strong> : Testez régulièrement l’ammoniac, les nitrites, les nitrates et le pH (kits de test disponibles en ligne).<br>
+            - <strong>Choisissez des espèces robustes</strong> : Tilapia et laitue sont parfaits pour débutants.<br>
+            - <strong>Évitez les surcharges</strong> : Ne mettez pas trop de poissons au début (1 poisson/20 L d’eau).<br>
+            - <strong>Apprenez la nitrification</strong> : Laissez le biofiltre se coloniser par des bactéries avant d’ajouter des poissons (cycle de 2-4 semaines).<br>
+            - <strong>Investissez dans une pompe fiable</strong> : Une bonne circulation d’eau est essentielle.<br>
+            - <strong>Consultez des ressources</strong> : Forums, livres, ou vidéos sur l’aquaponie pour approfondir vos connaissances.
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
