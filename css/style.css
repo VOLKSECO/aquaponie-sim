@@ -9,85 +9,111 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f0f4f8;
     color: #333;
-    padding: 20px;
+    padding: 15px;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 h1 {
     text-align: center;
     color: #1a3c6d;
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 h2 {
     color: #1a3c6d;
-    font-size: 1.5em;
+    font-size: 1.4em;
     font-weight: 600;
 }
 
 h3 {
     color: #1a3c6d;
-    font-size: 1.2em;
-    margin: 15px 0 10px;
+    font-size: 1.1em;
+    margin: 12px 0 8px;
+}
+
+/* Introduction */
+#intro {
+    text-align: center;
+    margin: 0 auto 20px;
+    max-width: 90%;
+    font-size: 0.9em;
+    color: #444;
+}
+
+#intro p {
+    margin: 0;
+    line-height: 1.5;
 }
 
 /* Schéma global */
 #schema {
     text-align: center;
-    margin: 30px 0;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 90vw; /* Limite la largeur */
+    overflow: hidden;
 }
 
-#schema svg {
+#schema object, #schema svg {
+    width: 100% !important; /* Force l’adaptation */
     max-width: 100%;
     height: auto;
+    max-height: 180px; /* Hauteur max mobile */
+    object-fit: contain; /* Préserve les proportions */
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* vCards */
 #modules {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
 }
 
 .vcard {
     background: #ffffff;
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
 }
 
 .vcard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .vcard-image {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .vcard-image svg {
-    max-width: 100px;
+    width: 100%;
+    max-width: 70px;
     height: auto;
 }
 
 .vcard h2 {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
 }
 
 .vcard .variables div {
-    margin: 10px 0;
+    margin: 8px 0;
 }
 
 .vcard .view-mode {
-    font-size: 1em;
+    font-size: 0.9em;
     color: #444;
 }
 
@@ -106,10 +132,11 @@ h3 {
 .vcard .edit-mode label {
     font-weight: 600;
     color: #1a3c6d;
+    font-size: 0.9em;
 }
 
 .vcard .edit-mode p {
-    font-size: 0.9em;
+    font-size: 0.85em;
     color: #666;
     margin: 5px 0;
 }
@@ -120,20 +147,21 @@ h3 {
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 6px;
-    font-size: 1em;
+    font-size: 0.9em;
 }
 
 .vcard button {
     background: #00a6a6;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 600;
     transition: background 0.3s ease;
-    margin: 5px;
+    width: 100%;
+    margin: 5px 0;
 }
 
 .vcard button:hover {
@@ -144,40 +172,48 @@ h3 {
 #graphiques {
     background: #ffffff;
     border-radius: 12px;
-    padding: 20px;
-    margin: 30px 0;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .chart-container {
-    margin: 20px 0;
+    margin: 15px 0;
+    width: 100%;
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .chart-container h3 {
     text-align: center;
+    font-size: 1em;
+    margin-bottom: 8px;
 }
 
 .chart-container canvas {
-    max-width: 100%;
-    height: 200px !important; /* Hauteur fixe pour éviter aplatissement */
+    width: 100% !important;
+    height: 200px !important;
 }
 
 /* Boutons de simulation */
 .button-group {
     text-align: center;
-    margin-top: 20px;
+    margin: 15px 0;
 }
 
 .button-group button {
     background: #ff6f61;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 600;
-    margin: 0 10px;
+    width: 90%;
+    margin: 8px auto;
+    display: block;
     transition: background 0.3s ease;
 }
 
@@ -189,56 +225,142 @@ h3 {
 #rapport, #explications, #conseils {
     background: #ffffff;
     border-radius: 12px;
-    padding: 20px;
-    margin: 30px 0;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #rapport p, #explications p, #conseils p {
-    font-size: 1em;
+    font-size: 0.9em;
     color: #444;
 }
 
+#conseils ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    font-size: 0.9em;
+}
+
 /* Responsive */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
     h1 {
-        font-size: 2em;
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    #intro {
+        font-size: 1em;
+        max-width: 800px;
+    }
+
+    #schema object, #schema svg {
+        max-width: 600px;
+        max-height: 300px; /* Hauteur max desktop */
     }
 
     #modules {
-        grid-template-columns: 1fr;
-        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
     }
 
     .vcard {
-        width: 100%;
+        max-width: 400px;
+        padding: 15px;
+    }
+
+    .vcard-image svg {
+        max-width: 100px;
+    }
+
+    .vcard h2 {
+        font-size: 1.4em;
+    }
+
+    .vcard .view-mode,
+    .vcard .edit-mode label,
+    .vcard .edit-mode input,
+    .vcard .edit-mode select,
+    .vcard button {
+        font-size: 1em;
     }
 
     .chart-container canvas {
-        height: 150px !important; /* Réduire légèrement sur petits écrans */
+        height: 250px !important;
     }
 
     .button-group button {
-        display: block;
-        margin: 10px auto;
+        width: auto;
+        margin: 0 10px;
+        display: inline-block;
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.8em;
+        font-size: 1.6em;
     }
 
     h2 {
-        font-size: 1.3em;
+        font-size: 1.2em;
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+
+    #intro {
+        font-size: 0.85em;
+        max-width: 95%;
+    }
+
+    #schema object, #schema svg {
+        max-width: 100%;
+        max-height: 180px;
+    }
+
+    .vcard {
+        padding: 10px;
     }
 
     .vcard-image svg {
-        max-width: 80px;
+        max-width: 60px;
+    }
+
+    .vcard h2 {
+        font-size: 1.1em;
+    }
+
+    .vcard .view-mode {
+        font-size: 0.85em;
+    }
+
+    .vcard .edit-mode p {
+        font-size: 0.8em;
     }
 
     .vcard button {
-        width: 100%;
-        padding: 12px;
+        font-size: 0.85em;
+        padding: 10px;
+    }
+
+    .chart-container canvas {
+        height: 180px !important;
+    }
+
+    .button-group button {
+        font-size: 0.85em;
+    }
+
+    #rapport p, #explications p, #conseils p, #conseils ul {
+        font-size: 0.85em;
     }
 }
