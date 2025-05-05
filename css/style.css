@@ -53,16 +53,17 @@ h3 {
     text-align: center;
     margin: 20px 0;
     width: 100%;
-    max-width: 90vw; /* Limite la largeur */
+    max-width: 90vw;
     overflow: hidden;
+    aspect-ratio: 3 / 2; /* Préserve les proportions */
 }
 
 #schema object, #schema svg {
-    width: 100% !important; /* Force l’adaptation */
+    width: 100% !important;
     max-width: 100%;
     height: auto;
-    max-height: 180px; /* Hauteur max mobile */
-    object-fit: contain; /* Préserve les proportions */
+    max-height: 150px;
+    object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -110,10 +111,10 @@ h3 {
 
 .vcard .variables div {
     margin: 8px 0;
+    font-size: 0.9em;
 }
 
 .vcard .view-mode {
-    font-size: 0.9em;
     color: #444;
 }
 
@@ -193,7 +194,7 @@ h3 {
 
 .chart-container canvas {
     width: 100% !important;
-    height: 200px !important;
+    height: 160px !important;
 }
 
 /* Boutons de simulation */
@@ -235,6 +236,11 @@ h3 {
     color: #444;
 }
 
+#rapport .param {
+    margin: 8px 0;
+    font-size: 0.9em;
+}
+
 #conseils ul {
     list-style-type: disc;
     margin-left: 20px;
@@ -262,7 +268,7 @@ h3 {
 
     #schema object, #schema svg {
         max-width: 600px;
-        max-height: 300px; /* Hauteur max desktop */
+        max-height: 300px;
     }
 
     #modules {
@@ -285,6 +291,7 @@ h3 {
         font-size: 1.4em;
     }
 
+    .vcard .variables div,
     .vcard .view-mode,
     .vcard .edit-mode label,
     .vcard .edit-mode input,
@@ -301,6 +308,10 @@ h3 {
         width: auto;
         margin: 0 10px;
         display: inline-block;
+    }
+
+    #rapport .param {
+        font-size: 1em;
     }
 }
 
@@ -324,7 +335,7 @@ h3 {
 
     #schema object, #schema svg {
         max-width: 100%;
-        max-height: 180px;
+        max-height: 150px;
     }
 
     .vcard {
@@ -339,6 +350,7 @@ h3 {
         font-size: 1.1em;
     }
 
+    .vcard .variables div,
     .vcard .view-mode {
         font-size: 0.85em;
     }
@@ -353,7 +365,7 @@ h3 {
     }
 
     .chart-container canvas {
-        height: 180px !important;
+        height: 150px !important; /* Réduit pour 13 graphiques */
     }
 
     .button-group button {
@@ -361,6 +373,209 @@ h3 {
     }
 
     #rapport p, #explications p, #conseils p, #conseils ul {
+        font-size: 0.85em;
+    }
+
+    #rapport .param {
+        font-size: 0.85em;
+    }
+}
+/* Styles existants inchangés */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f4f7fa;
+    color: #333;
+}
+
+h1, h2, h3 {
+    color: #00a6a6;
+}
+
+#intro, #schema, #modules, #graphiques, #rapport, #explications, #conseils, #explications-simulateur {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#schema {
+    max-height: 150px;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#schema-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.vcard {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.vcard-image {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vcard-image object {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.variables {
+    margin: 10px 0;
+}
+
+.variables div {
+    margin: 5px 0;
+}
+
+.edit-mode {
+    display: none;
+}
+
+.vcard.edit .view-mode {
+    display: none;
+}
+
+.vcard.edit .edit-mode {
+    display: block;
+}
+
+button {
+    background: #00a6a6;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background: #008080;
+}
+
+.chart-container {
+    margin: 10px 0;
+}
+
+.chart-container canvas {
+    max-height: 150px;
+}
+
+.button-group {
+    margin: 10px 0;
+}
+
+#explications p, #conseils p, #explications-simulateur p, #explications-simulateur ul {
+    font-size: 0.9em;
+    color: #444;
+}
+
+#explications-simulateur ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #schema {
+        max-height: 130px;
+    }
+
+    .vcard {
+        padding: 10px;
+    }
+
+    .chart-container canvas {
+        max-height: 130px;
+    }
+
+    #explications p, #conseils p, #explications-simulateur p, #explications-simulateur ul {
+        font-size: 0.85em;
+    }
+}
+
+/* Nouveaux styles pour les moulettes */
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #00a6a6;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #00a6a6;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.slider-value {
+    min-width: 80px;
+    font-size: 0.9em;
+    color: #333;
+    text-align: right;
+}
+
+@media (max-width: 480px) {
+    .slider-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    input[type="range"] {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .slider-value {
+        text-align: left;
         font-size: 0.85em;
     }
 }

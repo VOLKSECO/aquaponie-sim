@@ -66,6 +66,14 @@
             <button onclick="pauseSimulation()">Pause</button>
         </div>
         <div class="chart-container">
+            <h3>pH</h3>
+            <canvas id="chart-ph"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Température (°C)</h3>
+            <canvas id="chart-temperature"></canvas>
+        </div>
+        <div class="chart-container">
             <h3>Ammoniac (mg/L)</h3>
             <canvas id="chart-ammonia"></canvas>
         </div>
@@ -78,8 +86,28 @@
             <canvas id="chart-nitrate"></canvas>
         </div>
         <div class="chart-container">
-            <h3>pH</h3>
-            <canvas id="chart-ph"></canvas>
+            <h3>Oxygène dissous (mg/L)</h3>
+            <canvas id="chart-oxygen"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Conductivité (mS/cm)</h3>
+            <canvas id="chart-conductivity"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Dureté (ppm)</h3>
+            <canvas id="chart-hardness"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Alcalinité (ppm)</h3>
+            <canvas id="chart-alkalinity"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Turbidité</h3>
+            <canvas id="chart-turbidity"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Luminosité (h/jour)</h3>
+            <canvas id="chart-light"></canvas>
         </div>
         <div class="chart-container">
             <h3>Croissance Poissons (kg)</h3>
@@ -88,6 +116,10 @@
         <div class="chart-container">
             <h3>Croissance Plantes (kg)</h3>
             <canvas id="chart-plant"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Débit d’eau (L/h)</h3>
+            <canvas id="chart-flow"></canvas>
         </div>
     </div>
 
@@ -133,8 +165,47 @@
         </p>
     </div>
 
+    <!-- Explications du simulateur -->
+    <div id="explications-simulateur">
+        <h2>Comment fonctionne le simulateur</h2>
+        <div id="explications-simulateur-content">
+            <p>Ce simulateur modélise un système aquaponique réaliste. Les poissons produisent des déchets (ammoniac) transformés en nitrates par des bactéries, qui nourrissent les plantes. Chaque paramètre influence les autres selon des équations scientifiques.</p>
+            <h3>Les principes</h3>
+            <p>Les poissons produisent de l’ammoniac, converti en nitrites puis nitrates par le biofiltre. Les plantes absorbent les nitrates pour grandir, nettoyant l’eau. La température, le pH, et le débit d’eau affectent tout le système.</p>
+            <h3>Comment ça calcule ?</h3>
+            <p>Le simulateur utilise des équations basées sur la biologie :
+                <ul>
+                    <li><strong>Ammoniac</strong> : Produit par les poissons (plus de poissons = plus d’ammoniac).</li>
+                    <li><strong>Nitrites/Nitrates</strong> : Convertis par le biofiltre, selon le pH, la température, et le débit.</li>
+                    <li><strong>Plantes</strong> : Croissent avec les nitrates, la lumière, et un bon pH.</li>
+                    <li><strong>Poissons</strong> : Grandissent si l’eau est propre (peu d’ammoniac/nitrites).</li>
+                </ul>
+            </p>
+            <h3>Les paramètres et leur rôle</h3>
+            <ul>
+                <li><strong>Nombre de poissons (10-20)</strong> : Plus de poissons = plus d’ammoniac, donc plus de nutriments pour les plantes.</li>
+                <li><strong>pH (6.5-7.5)</strong> : Neutre pour poissons, plantes, et bactéries.</li>
+                <li><strong>Température (20-28°C)</strong> : Optimale pour poissons et bactéries.</li>
+                <li><strong>Ammoniac (0 mg/L)</strong> : Toxique, converti par le biofiltre.</li>
+                <li><strong>Nitrites (0 mg/L)</strong> : Toxiques, deviennent nitrates.</li>
+                <li><strong>Nitrates (10-30 mg/L)</strong> : Nourriture des plantes.</li>
+                <li><strong>Oxygène (6-8 mg/L)</strong> : Nécessaire pour poissons et bactéries.</li>
+                <li><strong>Conductivité (1-3 mS/cm)</strong> : Mesure les nutriments.</li>
+                <li><strong>Dureté (100-300 ppm)</strong> : Stabilise l’eau.</li>
+                <li><strong>Alcalinité (100-200 ppm)</strong> : Stabilise le pH.</li>
+                <li><strong>Turbidité (faible)</strong> : Eau claire = système sain.</li>
+                <li><strong>Luminosité (12-16 h/jour)</strong> : Essentielle pour les plantes.</li>
+                <li><strong>Croissance poissons (0-10 kg)</strong> : Dépend de l’eau propre.</li>
+                <li><strong>Croissance plantes (0-10 kg)</strong> : Dépend des nitrates/lumière.</li>
+                <li><strong>Débit d’eau (500-1000 L/h)</strong> : Transporte les nutriments, oxygène l’eau.</li>
+            </ul>
+            <h3>Essayez !</h3>
+            <p>Ajustez les paramètres (ex. ajoutez des poissons, augmentez le débit), lancez la simulation, et observez les graphiques. Par exemple, trop de poissons augmentent l’ammoniac, ce qui peut stresser le système si le biofiltre n’est pas efficace.</p>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/simulation.js"></script>
     <script src="js/ui.js"></script>
+    <script src="js/simulation.js"></script>
 </body>
 </html>
